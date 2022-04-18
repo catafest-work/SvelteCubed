@@ -24,19 +24,22 @@ export function renderScene(element) {
   const group = new THREE.Group();
   group.position.set(0, -0.5, 0);
 
-  const floorGeometry = new THREE.PlaneGeometry(30,30)
+  const floorGeometry = new THREE.PlaneGeometry(50,50)
   const floorMaterial = new THREE.MeshStandardMaterial({ color: 'burlywood'});
   const floor = new THREE.Mesh(floorGeometry, floorMaterial);
   floor.rotation.set(-Math.PI /2, 0,0);
   floor.receiveShadow = true;
 
   const primitive = new THREE.Object3D();
-  primitive.add(new THREE.GridHelper(50,50, 0x444444, 0x5555555));
+  primitive.add(new THREE.GridHelper(50,50, 0x444444, 0x555555));
   primitive.position.set(0, -0.001, 0);
 
   group.add(floor);
   group.add(primitive);
   group.add(group);
+
+  const light = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(light);
 
   const directionalLight = new THREE.DirectionalLight();
   directionalLight.color.set(0xffffff);
