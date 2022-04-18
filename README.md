@@ -1,0 +1,2 @@
+# SvelteCubed 
+Simple cube project 
